@@ -2,9 +2,11 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import StepOne from './StepOne';
 import PropTypes from 'prop-types';
+import Context from '../context';
 
 const Main = (props) => {
   const [ active, setActive ] = React.useState(false);
+  const context = React.useContext(Context);
 
   console.log(props.match.params.id);
 
@@ -23,7 +25,7 @@ const Main = (props) => {
   }
 
   return <div>
-    <h1>Main {props.name}</h1>
+    <h1>Main {context.contextName}</h1>
 
     {!active && <button onClick={handleActivateClick}>Activate</button>}
     {active && <p>Active</p>}
@@ -35,7 +37,7 @@ const Main = (props) => {
 
     {/* si no se usa redirect se puede hacer esta condición */}
     {/* !props.match.params.id && <p>default step</p> */}
-    {props.match.params.id === 'one' && <StepOne />}
+    {props.match.params.id === 'one' && <StepOne value="value from Main" />}
     {props.match.params.id === 'two' && <p>step two</p>}
 
   </div>
