@@ -10,14 +10,17 @@ import Footer from '../Footer/Footer';
 // cuando el usuario entre a la dirección /about queremos mostrarle el componente About
 
 function App() {
+  
+  const [ name, setName ] = React.useState('ponemos algo');
+
   return (<div className="App">
     <Router>
 
       <Header />
 
-      <Route path="/" exact component={Home} />
+      <Route path="/" exact render={() => <Home name={name} setName={setName} />} />
       <Route path="/about" component={About} />
-      <Route path="/main/:id?" component={Main} />
+      <Route path="/main/:id?" render={(props) => <Main name={name} match={props.match} />} />
 
       <Footer />
 
