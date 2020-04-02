@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Context from '../context';
 import SketchComp from './SketchComp';
 import { Slider } from '@material-ui/core';
+import { TwitterPicker } from 'react-color';
 
 const Main = (props) => {
   const [ active, setActive ] = React.useState(false);
@@ -14,6 +15,12 @@ const Main = (props) => {
   const handlePosX = (event, value) => {
     setPosX(value);
   }
+
+  const [ color, setColor ] = React.useState('#000');
+  const handleColor = (color) => {
+    setColor(color.hex);
+  }
+
 
   if(!props.match.params.id) {
     // redirigir al usuario a la ruta /main/one
@@ -32,9 +39,10 @@ const Main = (props) => {
   return <div>
     <h1>Main {context.contextName}</h1>
 
+    <TwitterPicker color={color} onChange={handleColor} />
     <Slider className="elslidercongato" value={posX} onChange={handlePosX} max={200} />
 
-    <SketchComp posX={posX} />
+    <SketchComp posX={posX} color={color} />
 
     {!active && <button onClick={handleActivateClick}>Activate</button>}
     {active && <p>Active</p>}

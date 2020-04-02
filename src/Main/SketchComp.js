@@ -19,13 +19,15 @@ const SketchComp = (props) => {
   React.useEffect(() => {
     // usamos la misma app de processing para actualizar un valor
     sketch.current.setX(props.posX);
-  }, [ props.posX ]);
+    sketch.current.setCol(props.color)
+  }, [ props.posX, props.color ]);
 
   return <div ref={elem}></div>;
 }
 
 SketchComp.propTypes = {
   posX: PropTypes.number,
+  color: PropTypes.string,
 }
 
 export default SketchComp;
