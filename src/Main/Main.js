@@ -4,12 +4,16 @@ import StepOne from './StepOne';
 import PropTypes from 'prop-types';
 import Context from '../context';
 import SketchComp from './SketchComp';
+import { Slider } from '@material-ui/core';
 
 const Main = (props) => {
   const [ active, setActive ] = React.useState(false);
   const context = React.useContext(Context);
 
-  console.log(props.match.params.id);
+  const [ posX, setPosX ] = React.useState(0);
+  const handlePosX = (event, value) => {
+    setPosX(value);
+  }
 
   if(!props.match.params.id) {
     // redirigir al usuario a la ruta /main/one
@@ -28,7 +32,9 @@ const Main = (props) => {
   return <div>
     <h1>Main {context.contextName}</h1>
 
-    <SketchComp />
+    <Slider className="elslidercongato" value={posX} onChange={handlePosX} max={200} />
+
+    <SketchComp posX={posX} />
 
     {!active && <button onClick={handleActivateClick}>Activate</button>}
     {active && <p>Active</p>}
