@@ -1,0 +1,22 @@
+
+
+$primary-color: red;
+@import '../../node_modules/loaders.css/src/animations/pacman.scss';
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}
+
+.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border-color: green !important;
+}
+
+
+.MuiSlider-thumb{
+  background-image: url(https://misanimales.com/wp-content/uploads/2016/10/crecen-los-gatos.jpg);
+  background-size: cover;
+  background-position: center;
+}

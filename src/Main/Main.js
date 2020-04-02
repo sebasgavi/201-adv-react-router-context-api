@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import StepOne from './StepOne';
 import PropTypes from 'prop-types';
 import Context from '../context';
+import SketchComp from './SketchComp';
 
 const Main = (props) => {
   const [ active, setActive ] = React.useState(false);
@@ -26,6 +27,8 @@ const Main = (props) => {
 
   return <div>
     <h1>Main {context.contextName}</h1>
+
+    <SketchComp />
 
     {!active && <button onClick={handleActivateClick}>Activate</button>}
     {active && <p>Active</p>}
