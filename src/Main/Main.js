@@ -36,8 +36,18 @@ const Main = (props) => {
     setActive(true);
   }
 
+  var w = 120;
+  var x = 150;
+
   return <div>
     <h1>Main {context.contextName}</h1>
+
+    <div style={{ position: 'relative', width: 500, height: 500 }}>
+
+      <div style={{ width: w, height: 300, background: 'red', position: 'absolute', top: 50, left: x }}></div>
+      <div style={{ width: w/3, height: 180, background: 'blue', position: 'absolute', top: 50, left: x - w/3, transformOrigin: 'top right', transform: 'rotate(' + posX + 'deg)' }}></div>
+
+    </div>
 
     <TwitterPicker color={color} onChange={handleColor} />
     <Slider className="elslidercongato" value={posX} onChange={handlePosX} max={200} />
